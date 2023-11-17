@@ -1,9 +1,11 @@
 -- plugins/rest.lua
 return {
   "rest-nvim/rest.nvim",
-  requires = { "nvim-lua/plenary.nvim" },
+  dependencies = { { "nvim-lua/plenary.nvim" } },
   config = function()
-    require("rest-nvim").setup({
+    local rest = require("rest-nvim")
+
+    rest.setup({
       -- Open request results in a horizontal split
       result_split_horizontal = false,
       -- Keep the http file buffer above|left when split horizontal|vertical
@@ -35,7 +37,7 @@ return {
         },
       },
       -- Jump to request line on run
-      jump_to_request = true,
+      jump_to_request = false,
       env_file = ".env",
       custom_dynamic_variables = {},
       yank_dry_run = true,
